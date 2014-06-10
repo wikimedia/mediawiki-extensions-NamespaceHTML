@@ -31,6 +31,7 @@ $wgExtensionCredits['parserhook'][] = array(
 $wgAutoloadClasses['NamespaceHTML'] = __DIR__ . '/NamespaceHTML.class.php';
 $wgHooks['ParserFirstCallInit'][] = 'NamespaceHTML::addNamespaceHTML';
 $wgExtensionMessagesFiles['NamespaceHTML'] = __DIR__ . '/NamespaceHTML.i18n.php';
+$wgMessagesDirs['NamespaceHTML'] = __DIR__ . '/i18n';
 
 # After extension inclusion, in LocalSettings.php, set to namespaces where
 # raw html should be allowed.
