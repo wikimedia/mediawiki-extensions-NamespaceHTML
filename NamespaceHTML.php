@@ -5,7 +5,7 @@
  *
  * To activate this extension, add the following into your LocalSettings.php file:
  * require_once( "$IP/extensions/NamespaceHTML/NamespaceHTML.php" );
- * #$wgRawHTMLNamespaces = array(); #must be set!
+ * #$wgRawHtmlNamespaces = array(); #must be set!
  *
  * @ingroup Extensions
  * @author Ike Hecht
