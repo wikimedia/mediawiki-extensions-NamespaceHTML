@@ -1,5 +1,4 @@
 <?php
-
 /**
  * NamespaceHTML - allows raw HTML in specified namespaces
  *
@@ -9,7 +8,7 @@
  *
  * @ingroup Extensions
  * @author Ike Hecht
- * @version 0.1
+ * @version 0.2
  * @link https://www.mediawiki.org/wiki/Extension:NamespaceHTML Documentation
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
@@ -22,16 +21,20 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'NamespaceHTML',
-	'version' => '0.1',
+	'version' => '0.2',
 	'author' => 'Ike Hecht for [http://www.wikiworks.com/ WikiWorks]',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:NamespaceHTML',
 	'descriptionmsg' => 'namespacehtml-desc',
 );
 
 $wgAutoloadClasses['NamespaceHTML'] = __DIR__ . '/NamespaceHTML.class.php';
-$wgHooks['ParserFirstCallInit'][] = 'NamespaceHTML::addNamespaceHTML';
 $wgExtensionMessagesFiles['NamespaceHTML'] = __DIR__ . '/NamespaceHTML.i18n.php';
 $wgMessagesDirs['NamespaceHTML'] = __DIR__ . '/i18n';
+
+# If raw HTML allowed wiki-wide, don't do anything.
+if ( !$wgRawHtml ) {
+	$wgHooks['ParserFirstCallInit'][] = 'NamespaceHTML::addNamespaceHTML';
+}
 
 # After extension inclusion, in LocalSettings.php, set to namespaces where
 # raw html should be allowed.
