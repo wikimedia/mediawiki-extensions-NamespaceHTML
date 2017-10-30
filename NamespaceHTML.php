@@ -28,7 +28,6 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 $wgAutoloadClasses['NamespaceHTML'] = __DIR__ . '/NamespaceHTML.class.php';
-$wgExtensionMessagesFiles['NamespaceHTML'] = __DIR__ . '/NamespaceHTML.i18n.php';
 $wgMessagesDirs['NamespaceHTML'] = __DIR__ . '/i18n';
 
 # If raw HTML allowed wiki-wide, don't do anything.
