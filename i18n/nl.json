@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Esketti"
+			"Esketti",
+			"Mainframe98"
 		]
 	},
-	"namespacehtml-desc": "Laat HTML in aangegeven naamruimten"
+	"namespacehtml-desc": "Laat HTML in aangegeven naamruimten toe"
 }
