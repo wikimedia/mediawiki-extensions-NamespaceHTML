@@ -10,7 +10,7 @@
  * @author Ike Hecht
  * @version 0.2
  * @link https://www.mediawiki.org/wiki/Extension:NamespaceHTML Documentation
- * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ * @license GPL-2.0-or-later
  */
 if ( function_exists( 'wfLoadExtension' ) ) {
 	wfLoadExtension( 'NamespaceHTML' );
