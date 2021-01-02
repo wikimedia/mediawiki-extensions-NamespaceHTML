@@ -8,6 +8,18 @@
 class NamespaceHTML {
 
 	/**
+	 * Checks is raw HTML allowed wiki-wide.
+	 * If it is allowed, extension won't do anything.
+	 */
+	public static function onRegistration() {
+		global $wgRawHtml, $wgHooks;
+
+		if ( !$wgRawHtml ) {
+			$wgHooks['ParserFirstCallInit'][] = 'NamespaceHTML::addNamespaceHTML';
+		}
+	}
+
+	/**
 	 * Where secure and relevant, adds support for <html> tag
 	 *
 	 * @param Parser $parser
