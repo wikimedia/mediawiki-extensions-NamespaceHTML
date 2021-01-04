@@ -13,11 +13,11 @@ class NamespaceHTML {
 	 * Checks is raw HTML allowed wiki-wide.
 	 * If it is allowed, extension won't do anything.
 	 */
-	public static function onRegistration() {
-		global $wgRawHtml, $wgHooks;
+	public static function onRegistration() : void {
+		$config = self::getConfig();
 
-		if ( !$wgRawHtml ) {
-			$wgHooks['ParserFirstCallInit'][] = 'NamespaceHTML::addNamespaceHTML';
+		if ( !$config->get( 'RawHtml' ) ) {
+			$config->get( 'Hooks' )['ParserFirstCallInit'][] = 'NamespaceHTML::addNamespaceHTML';
 		}
 	}
 
@@ -43,7 +43,7 @@ class NamespaceHTML {
 	 * @param array $attributes
 	 * @param Parser $parser
 	 * @param PPFrame $frame
-	 * @return string Raw or escaped HTML
+	 * @return string[]|string Raw or escaped HTML
 	 */
 	public static function html( $content, array $attributes, Parser $parser, PPFrame $frame ) {
 		$title = $parser->getTitle();
@@ -57,7 +57,7 @@ class NamespaceHTML {
 
 		# Ideally, this check should take place in function 'addNamespaceHTML'
 		# but for some reason, $parser->getTitle() often returns null there.
-		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$config = self::getConfig();
 		$allowedNamespaces = array_intersect(
 			$config->get( 'RawHtmlNamespaces' ), [ $titleNamespace, $frameNamespace ]
 		);
@@ -72,5 +72,13 @@ class NamespaceHTML {
 
 		# raw HTML not allowed here so send out escaped text
 		return htmlspecialchars( Html::rawElement( 'html', $attributes, $content ) );
+	}
+
+	/**
+	 * Get a Config object
+	 * @return Config
+	 */
+	private static function getConfig() : Config {
+		return MediaWikiServices::getInstance()->getMainConfig();
 	}
 }
