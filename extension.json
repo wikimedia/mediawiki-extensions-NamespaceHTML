@@ -26,6 +26,9 @@
 			"value": []
 		}
 	},
+	"ConfigRegistry": {
+		"NamespaceHTML": "GlobalVarConfig::newInstance"
+	},
 	"callback": "NamespaceHTML::onRegistration",
 	"manifest_version": 2
 }

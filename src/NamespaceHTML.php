@@ -14,10 +14,10 @@ class NamespaceHTML {
 	 * If it is allowed, extension won't do anything.
 	 */
 	public static function onRegistration() : void {
-		$config = self::getConfig();
+		global $wgRawHtml, $wgHooks;
 
-		if ( !$config->get( 'RawHtml' ) ) {
-			$config->get( 'Hooks' )['ParserFirstCallInit'][] = 'NamespaceHTML::addNamespaceHTML';
+		if ( !$wgRawHtml ) {
+			$wgHooks['ParserFirstCallInit'][] = 'NamespaceHTML::addNamespaceHTML';
 		}
 	}
 
@@ -79,6 +79,6 @@ class NamespaceHTML {
 	 * @return Config
 	 */
 	private static function getConfig() : Config {
-		return MediaWikiServices::getInstance()->getMainConfig();
+		return MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'NamespaceHTML' );
 	}
 }
