@@ -45,13 +45,13 @@ class NamespaceHTML {
 	 * @param PPFrame $frame
 	 * @return string[]|string Raw or escaped HTML
 	 */
-	public static function html( $content, array $attributes, Parser $parser, PPFrame $frame ) {
+	public static function html(
+		string $content,
+		array $attributes,
+		Parser $parser,
+		PPFrame $frame
+	) {
 		$title = $parser->getTitle();
-
-		if ( !isset( $title ) ) {
-			return htmlspecialchars( Html::rawElement( 'html', $attributes, $content ) );
-		}
-
 		$titleNamespace = $title->getNamespace();
 		$frameNamespace = $frame->getTitle()->getNamespace();
 
@@ -62,15 +62,17 @@ class NamespaceHTML {
 			$config->get( 'RawHtmlNamespaces' ), [ $titleNamespace, $frameNamespace ]
 		);
 
-		if ( (bool)$allowedNamespaces ) {
+		if ( $allowedNamespaces ) {
 			// copied from CoreTagHooks::html
 			return [
+				// @phan-suppress-next-line SecurityCheck-XSS
 				$content,
 				'markerType' => 'nowiki'
 			];
 		}
 
 		# raw HTML not allowed here so send out escaped text
+		# @phan-suppress-next-line SecurityCheck-DoubleEscaped
 		return htmlspecialchars( Html::rawElement( 'html', $attributes, $content ) );
 	}
 
