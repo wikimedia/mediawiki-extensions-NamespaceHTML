@@ -13,7 +13,7 @@ class NamespaceHTML {
 	 * Checks is raw HTML allowed wiki-wide.
 	 * If it is allowed, extension won't do anything.
 	 */
-	public static function onRegistration() : void {
+	public static function onRegistration(): void {
 		global $wgRawHtml, $wgHooks;
 
 		if ( !$wgRawHtml ) {
@@ -78,7 +78,7 @@ class NamespaceHTML {
 	 * Get a Config object
 	 * @return Config
 	 */
-	private static function getConfig() : Config {
+	private static function getConfig(): Config {
 		return MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'NamespaceHTML' );
 	}
 }
