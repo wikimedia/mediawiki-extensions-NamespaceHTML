@@ -23,5 +23,5 @@ if ( function_exists( 'wfLoadExtension' ) ) {
 	);
 	return;
 } else {
-	die( 'This version of the NamespaceHTML extension requires MediaWiki 1.29+' );
+	die( 'This version of the NamespaceHTML extension requires MediaWiki 1.36+' );
 }
