@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Xiplus"
 		]
 	},
-	"namespacehtml-desc": "允许指定名字空间中的原始HTML"
+	"namespacehtml-desc": "允许指定命名空间中的原始HTML"
 }
