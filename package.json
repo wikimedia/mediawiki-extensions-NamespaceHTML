@@ -1,4 +1,5 @@
 {
+	"name": "NamespaceHTML",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"
