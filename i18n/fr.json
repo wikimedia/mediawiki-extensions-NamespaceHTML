@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Verdy p"
 		]
 	},
-	"namespacehtml-desc": "Autorise le HTML brut dans les espaces de nom spécifiés"
+	"namespacehtml-desc": "Autorise le HTML brut dans les espaces de noms spécifiés"
 }
